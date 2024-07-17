@@ -5,6 +5,13 @@ const seatTypes = {
     FIRST_CLASS: 'first-class',
 };
 
+const ticketStatus = {
+    PENDING: "pending",
+    SUCCESS: "success",
+    FAILED: "FAILED"
+}
+
 module.exports = {
-    seatTypes
+    seatTypes,
+    ticketStatus
 }

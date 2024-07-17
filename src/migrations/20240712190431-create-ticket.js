@@ -1,4 +1,6 @@
 'use strict';
+const { ticketStatus } = require("../utils");
+const { PENDING, FAILED, SUCCESS } = ticketStatus;
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -10,16 +12,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       subject: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       recipient: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+          isEmail: true
+        },
+        allowNull: false
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        values: [PENDING, FAILED, SUCCESS],
+        defaultValue: PENDING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
