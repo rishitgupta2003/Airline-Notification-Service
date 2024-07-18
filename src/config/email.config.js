@@ -32,4 +32,4 @@ const mailUser = (recieverMail, subject, message) => {
     );
 }
 
-module.exports = { mailUser };
+module.exports = mailUser ;
